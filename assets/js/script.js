@@ -72,22 +72,20 @@
 
       // if answer is correct
       if(userAnswer === currentQuestion.correctAnswer){
-        score +12;
+        score +=12;
         answerContainers[questionNumber].style.color = 'lightgreen';
       }
       // if answer is wrong or blank
       else{
         answerContainers[questionNumber].style.color = 'red';
-        score -5;
+        score -=5;
       }
     });
-
-    // show number of correct answers out of total
-    resultsContainer.innerHTML = `${score} out of 60`;
 
     // save score to local storage
     localStorage.setItem('recentScore', score);
     return window.location.assign("saveScore.html");
+
   }
 
   function showSlide(n) {

@@ -4,7 +4,6 @@ const saveBtn = document.querySelector('#save');
 const yourScore = document.querySelector('#results');
 
 const leaderBoard = [];
-const saveLeaderBoard = JSON.parse(localStorage.setItem(leaderBoard))
 const scoresKept = 5
 yourScore.innerText = localStorage.getItem(recentScore, num) + "out of 60!";
 
