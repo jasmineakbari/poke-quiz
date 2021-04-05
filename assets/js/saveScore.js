@@ -1,24 +1,22 @@
   
 const username = document.querySelector('#username');
 const saveBtn = document.querySelector('#save');
-const yourScore = document.querySelector('#results');
+const results = document.querySelector('#results');
 
 const leaderBoard = [];
 const scoresKept = 5
-yourScore.innerText = localStorage.getItem(recentScore, num) + "out of 60!";
-
-username.addEventListener('keyup', ()=>{
-    saveBtn.disabled = !username.value
-})
 
 saveScore = event =>{
     event.preventDefault()
 
+    let yourScore = JSON.parse(localStorage.getItem("recentScore"));
+
     const score = {
-        score: recentScore,
+        result: yourScore,
         name: username.value
     }
 
+    console.log(score)
     leaderBoard.push(score);
     leaderBoard.sort((a,b)=>{
         return b.score - a.score
@@ -27,3 +25,9 @@ saveScore = event =>{
     localStorage.setItem('leaderBoard',JSON.stringify(leaderBoard))
     window.location.assign('scores.html')
 }
+
+username.addEventListener('keyup', ()=>{
+    saveBtn.disabled = !username.value
+})
+
+saveBtn.addEventListener('click', saveScore);

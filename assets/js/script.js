@@ -73,11 +73,9 @@
       // if answer is correct
       if(userAnswer === currentQuestion.correctAnswer){
         score +=12;
-        answerContainers[questionNumber].style.color = 'lightgreen';
       }
       // if answer is wrong or blank
       else{
-        answerContainers[questionNumber].style.color = 'red';
         score -=5;
       }
     });
