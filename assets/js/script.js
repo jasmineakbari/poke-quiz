@@ -1,18 +1,15 @@
 (function(){
-  // Functions
   function startQuiz(){
     // variable to store the HTML output
     const output = [];
 
-    // for each question...
+    // for each question
     myQuestions.forEach(
       (currentQuestion, questionNumber) => {
         // variable to store the list of possible answers
         const answers = [];
 
-        // and for each available answer...
         for(letter in currentQuestion.answers){
-          // ...add an HTML radio button
           answers.push(
             `<label>
               <input type="radio" name="question${questionNumber}" value="${letter}">
@@ -22,7 +19,6 @@
           );
         }
 
-        // add this question and its answers to the output
         output.push(
           `<div class="slide">
             <div class="question"> ${currentQuestion.question} </div>
@@ -32,9 +28,8 @@
       }
     );
 
-    // finally combine our output list into one string of HTML and put it on the page
     quizContainer.innerHTML = output.join('');
-    // srat the timer
+    // strat the timer
     countDown();
   }
 
@@ -55,26 +50,18 @@
   }
 
   function showResults(){
-
-    // gather answer containers from our quiz
     const answerContainers = quizContainer.querySelectorAll('.answers');
-
-    // keep track of user's answers
     let score = 0;
 
-    // for each question...
     myQuestions.forEach( (currentQuestion, questionNumber) => {
 
-      // find selected answer
       const answerContainer = answerContainers[questionNumber];
       const selector = `input[name=question${questionNumber}]:checked`;
       const userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
-      // if answer is correct
       if(userAnswer === currentQuestion.correctAnswer){
         score +=12;
       }
-      // if answer is wrong or blank
       else{
         score -=5;
       }
@@ -115,7 +102,6 @@
   }
 
   const quizContainer = document.getElementById('quiz');
-  const resultsContainer = document.getElementById('results');
   const submitButton = document.getElementById('submit');
   const myQuestions = [
     {
@@ -170,16 +156,13 @@
     }
   ];
 
-  // Kick things off
   startQuiz();
 
-  // Pagination
   const previousButton = document.getElementById("previous");
   const nextButton = document.getElementById("next");
   const slides = document.querySelectorAll(".slide");
   let currentSlide = 0;
 
-  // Show the first slide
   showSlide(currentSlide);
 
   // Event listeners
