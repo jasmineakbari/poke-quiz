@@ -9,7 +9,8 @@ body{
     background-color: #f1d4d4;
 }
 
-h1{
+h1,
+nav {
     font-weight: 300;
     margin: 0px;
     padding: 10px;
